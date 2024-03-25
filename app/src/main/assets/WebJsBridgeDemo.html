@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <style type="text/css">
+    .bn {
+        padding: 8px 20px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 20px;
+    }
+    </style>
+</head>
+
+<body>
+<div style="display: flex; flex-direction: column;">
+    <button class="bn" onclick="invokeNativeMethod()">invoke Native method</button>
+    <button class="bn" onclick="invokeNativeMethodWithParams()">invoke Native method with params </button>
+    <button class="bn" onclick="delayedRegisterHandler()">delayed register Js method to Native </button>
+</div>
+</body>
+<script type='text/javascript'>
+function setupWebViewJsBridge(callback) {
+    let isAndroid = Boolean(navigator.userAgent.match(/android/ig));
+    let isIOS = Boolean(navigator.userAgent.match(/iphone|ipod|iOS/ig));
+    if (window.WKWebViewJavascriptBridge) {
+        return callback(window.WKWebViewJavascriptBridge);
+    }
+    if (window.WKWVJBCallbacks) {
+        window.WKWVJBCallbacks.push(callback);
+    } else {
+        window.WKWVJBCallbacks = [callback];
+    }
+    if (isAndroid) {
+        if (!window.InjectJavascript) {
+            window.alert("ERROR: window.InjectJavascript if null!");
+            return;
+        }
+        window.InjectJavascript.init();
+    } else if (isIOS) {
+        window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
+    }
+}
+
+function invokeNativeMethod() {
+    setupWebViewJsBridge(function(bridge) {
+        bridge.callHandler("showNativeAlert", null, function(data) {
+            let response = JSON.parse(data)
+            window.alert(`invoke Native method success.\nNative callback: [data=${data}]`)
+        })
+    })
+}
+
+function invokeNativeMethodWithParams() {
+    setupWebViewJsBridge(function(bridge) {
+        let params = {
+            "message": "This is Javascript Params."
+        }
+        bridge.callHandler("showNativeAlertWithParams", params, function(data) {
+            let response = JSON.parse(data)
+            window.alert(`invoke Native method success.\nNative callback: [data=${data}]`)
+        })
+    })
+}
+
+function delayedRegisterHandler() {
+    setupWebViewJsBridge(function(bridge) {
+        bridge.registerHandler("delayedRegisterAlert", function(data, callback) {
+            let result = window.confirm(
+                "Native invoke \"delayedAlert\" success.\n Please click button Click the button to trigger the callback."
+            )
+            if (result) {
+                callback({
+                    "result": "confirm"
+                })
+            } else {
+                callback({
+                    "result": "cancel"
+                })
+            }
+        })
+    })
+}
+setupWebViewJsBridge(function(bridge) {
+    bridge.registerHandler("showJsAlert", function(data, callback) {
+        let result = window.confirm("Native invoke \"showJsAlert\" success.")
+        if (result) {
+            callback({
+                "result": "confirm"
+            })
+        } else {
+            callback({
+                "result": "cancel"
+            })
+        }
+    })
+})
+setupWebViewJsBridge(function(bridge) {
+    bridge.registerHandler("showJsAlertWithParams", function(data, callback) {
+        let result = window.confirm(
+            `Native invoke \"showJsAlertWithParams\" success.\nNative params: [data=${JSON.stringify(data)}]`
+        )
+        if (result) {
+            callback({
+                "result": "confirm"
+            })
+        } else {
+            callback({
+                "result": "cancel"
+            })
+        }
+    })
+})
+</script>
