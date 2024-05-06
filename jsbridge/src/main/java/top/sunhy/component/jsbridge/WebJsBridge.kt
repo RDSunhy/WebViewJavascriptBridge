@@ -14,8 +14,6 @@ object WebJsBridge {
      */
     internal var JS_BRIDGE_INSTANCE = "WKWebViewJavascriptBridge"
 
-    internal var DEBUG = false
-
     fun setBridgeName(name: String) {
         this.JS_BRIDGE_INSTANCE = name
     }
