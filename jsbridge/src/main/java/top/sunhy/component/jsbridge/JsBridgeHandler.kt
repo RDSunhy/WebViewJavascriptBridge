@@ -107,7 +107,7 @@ class JsBridgeHandler : IBridgeHandler {
         if (webView == null) return
         val webView = requireNotNull(webView)
         if (Looper.getMainLooper() == Looper.myLooper()) {
-            val serializedMessage = GsonUtils.toJson(message)
+            val serializedMessage = GsonUtils.toJson(message).replace("\\n", "\\\\n")
             val script = String.format(SCRIPT_HANDLE_MESSAGE, serializedMessage)
             webView.evaluateJavascript(script) {}
         } else {
