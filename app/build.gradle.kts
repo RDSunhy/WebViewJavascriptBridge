@@ -44,5 +44,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.code.gson:gson:2.10.1")
 
-    implementation(project(":jsbridge"))
+//    implementation(project(":jsbridge"))
+    implementation("io.github.rdsunhy:component-jsbridge:1.0.0")
 }
