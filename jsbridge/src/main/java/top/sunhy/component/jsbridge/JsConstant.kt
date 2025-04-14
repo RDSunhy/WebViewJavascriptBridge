@@ -13,7 +13,7 @@ internal const val INTERFACE_FLUSH_MESSAGE = "FlushMessageQueue"
 internal val JS_BRIDGE_INSTANCE get() = WebJsBridge.JS_BRIDGE_INSTANCE
 
 internal val SCRIPT_FETCH_QUEUE = "window.${JS_BRIDGE_INSTANCE}._fetchQueue()"
-internal val SCRIPT_HANDLE_MESSAGE = "window.${JS_BRIDGE_INSTANCE}._handleMessageFromAndroid('%s')"
+internal val SCRIPT_HANDLE_MESSAGE = "window.${JS_BRIDGE_INSTANCE}._handleMessageFromAndroid(%s)"
 
 internal val SCRIPT_INJECT_BRIDGE = """
 ;(function() {
