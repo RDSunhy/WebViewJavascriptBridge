@@ -1,6 +1,6 @@
 # WebViewJavascriptBridge
 
-> [中文介绍](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/README.md) | [CHANGELOG](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/CHANGELOG_EN.md)
+> [中文介绍](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/README.md) | [CHANGELOG](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/CHANGELOG_EN.md) ｜[![](https://img.shields.io/maven-central/v/io.github.rdsunhy/component-jsbridge)](https://img.shields.io/maven-central/v/io.github.rdsunhy/component-jsbridge) 
 
 Reference [WKWebViewJavascriptBridge](https://github.com/Lision/WKWebViewJavascriptBridge)  implementation of the android platform.
 
@@ -13,7 +13,7 @@ repositories {
     mavenCentral()
 }
 
-implementation("io.github.rdsunhy:component-jsbridge:1.0.0")
+implementation("io.github.rdsunhy:component-jsbridge:lastest")
 ```
 
 
