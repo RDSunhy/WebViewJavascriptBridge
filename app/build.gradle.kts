@@ -45,5 +45,5 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
 //    implementation(project(":jsbridge"))
-    implementation("io.github.rdsunhy:component-jsbridge:1.0.0")
+    implementation("io.github.rdsunhy:component-jsbridge:1.0.2")
 }
