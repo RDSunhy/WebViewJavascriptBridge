@@ -1,6 +1,6 @@
 # WebViewJavascriptBridge
 
-> [English README](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/README_EN.md)
+> [English README](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/README_EN.md) | [更新日志](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/CHANGELOG.md)
 
 参考 [WKWebViewJavascriptBridge](https://github.com/Lision/WKWebViewJavascriptBridge) 实现的 Android 平台 Js 桥接库，尽可能保持了和 [WKWebViewJavascriptBridge](https://github.com/Lision/WKWebViewJavascriptBridge) 相同的 api，支持自定义桥接名称，并且没有与 WebView 强行耦合，更像是对 WebView 能力的增强。
 

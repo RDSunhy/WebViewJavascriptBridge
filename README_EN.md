@@ -1,6 +1,6 @@
 # WebViewJavascriptBridge
 
-> [中文介绍](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/README.md)
+> [中文介绍](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/README.md) | [CHANGELOG](https://github.com/RDSunhy/WebViewJavascriptBridge/blob/main/CHANGELOG_EN.md)
 
 Reference [WKWebViewJavascriptBridge](https://github.com/Lision/WKWebViewJavascriptBridge)  implementation of the android platform.
 
